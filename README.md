@@ -3,3 +3,4 @@ Testing merge queue and related actions
 
 Test 1
 Test 3
+Test 4
