@@ -3,6 +3,7 @@ name: Do something when queued
 "on":
   merge_group:
     types: [checks_requested]
+  workflow_dispatch:
 
 jobs:
   gating:
