@@ -1,14 +1,13 @@
 ---
 name: Do something when queued
 "on":
-  merge_group:
-    types: [checks_requested]
-  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
   gating:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo the var
+      - name: Sleep
         run: |
-          sleep 60s
+          sleep 10s
