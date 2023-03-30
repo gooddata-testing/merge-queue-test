@@ -2,6 +2,7 @@
 name: Do something when queued
 "on":
   merge_group:
+    types: [checks_requested]
 
 jobs:
   gating:
