@@ -5,7 +5,7 @@ name: Do something when queued
     types: [checks_requested]
 
 jobs:
-  gating:
+  gating-merge-group:
     runs-on: ubuntu-latest
     steps:
       - name: Print date

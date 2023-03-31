@@ -5,7 +5,7 @@ name: Do something when queued
     types: [opened, reopened, synchronize]
 
 jobs:
-  gating:
+  gating-pull-request:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
