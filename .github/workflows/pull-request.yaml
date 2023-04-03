@@ -1,5 +1,5 @@
 ---
-name: Do something when queued
+name: Do something when pull request updated
 "on":
   pull_request:
     types: [opened, reopened, synchronize]
