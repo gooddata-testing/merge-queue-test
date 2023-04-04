@@ -15,3 +15,16 @@ jobs:
           date
           sleep 10s
           date
+
+  mock_report:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'merge_group' }}
+    steps:
+      - name: Skip PR tests
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{ secrets.GITHUB_TOKEN }}
+          context: 'gating-pull-request'
+          description: 'Skipped for merge queue'
+          state: 'success'
+          sha: ${{github.event.merge_group.head.sha || github.sha}}
