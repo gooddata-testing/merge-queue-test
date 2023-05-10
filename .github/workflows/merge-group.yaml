@@ -11,4 +11,6 @@ jobs:
       - name: Print date
         run: |
             date
+            sleep 20s
+            date
     
