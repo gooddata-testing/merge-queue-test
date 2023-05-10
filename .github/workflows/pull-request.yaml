@@ -1,40 +1,40 @@
----
-name: Do something when pull request updated
-"on":
-  pull_request:
-    types: [opened, reopened, synchronize]
-  merge_group:
-
-jobs:
-  gating-pull-request:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      - name: Sleep
-        run: |
-          date
-          sleep 10s
-          date
-
-  gating-pull-request:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      - name: Sleep
-        run: |
-          date
-          sleep 10s
-          date
-
-  mock_report:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'merge_group' }}
-    steps:
-      - name: Skip PR tests
-        uses: Sibz/github-status-action@v1
-        with:
-          authToken: ${{ secrets.GITHUB_TOKEN }}
-          context: 'gating-pull-request'
-          description: 'Skipped for merge queue'
-          state: 'success'
-          sha: ${{github.event.merge_group.head.sha || github.sha}}
+#---
+#name: Do something when pull request updated
+#"on":
+#  pull_request:
+#    types: [opened, reopened, synchronize]
+#  merge_group:
+#
+#jobs:
+#  gating-pull-request:
+#    runs-on: ubuntu-latest
+#    if: ${{ github.event_name == 'pull_request' }}
+#    steps:
+#      - name: Sleep
+#        run: |
+#          date
+#          sleep 10s
+#          date
+#
+#  gating-pull-request:
+#    runs-on: ubuntu-latest
+#    if: ${{ github.event_name == 'pull_request' }}
+#    steps:
+#      - name: Sleep
+#        run: |
+#          date
+#          sleep 10s
+#          date
+#
+#  mock_report:
+#    runs-on: ubuntu-latest
+#    if: ${{ github.event_name == 'merge_group' }}
+#    steps:
+#      - name: Skip PR tests
+#        uses: Sibz/github-status-action@v1
+#        with:
+#          authToken: ${{ secrets.GITHUB_TOKEN }}
+#          context: 'gating-pull-request'
+#          description: 'Skipped for merge queue'
+#          state: 'success'
+#          sha: ${{github.event.merge_group.head.sha || github.sha}}

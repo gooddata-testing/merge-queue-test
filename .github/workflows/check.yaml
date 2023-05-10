@@ -1,0 +1,21 @@
+---
+name: Fake unit test
+"on":
+  pull_request:
+    types: [opened, reopened, synchronize]
+  
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Normal checkout
+        uses: actions/checkout@v3
+      - name: Check that README.md has even no of lines
+        run: |
+          A=$(wc -l <README.md)
+          echo "README.md has $A lines"
+          B=$(( $A % 2))
+          if [ $B -ne 0 ]; then
+            exit 2
+          fi
+
